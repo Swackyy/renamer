@@ -114,4 +114,14 @@ public interface RenamerExtension {
     	return dependency(coordinates, task -> {});
     }
     Provider<Dependency> dependency(String coordinates, Action<? super RenameJar> action);
+
+    /// Does Mixin Magic. See https://github.com/MinecraftForge/renamer/issues/36 for more info
+    ///
+    ///
+    ///
+    default MixinConfig enableMixins() {
+    	return enableMixins(task -> {});
+    }
+    MixinConfig enableMixins(Action<? super MixinConfig> action);
+    MixinConfig getMixin();
 }
